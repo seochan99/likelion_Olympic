@@ -4,7 +4,7 @@ from django.db import models
 from account.models import CustomUser
 
 # Create your views here.
-def main(request):
+def home(request):
     
-    return render(request, 'main.html')
+    return render(request, 'home.html')
 
