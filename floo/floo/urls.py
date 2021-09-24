@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('', views.main, name='main'),  
     path('FLOO/', include('community.urls')),
+    path('mbti/', include('mbti.urls')),
     
 
 

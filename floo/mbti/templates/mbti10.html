@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI TEST 10번</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'component.css' %}">
+</head>
+
+<body>
+    <section id="survey">
+        <div class="wrapper">
+            <form action="{% url 'mbti2' %}" method="POST" enctype=multipart/form-data>
+                <div class="mbti2">
+                    <div class="question_container">
+                        <h3 class="number">Question 1</h3>
+                        <h3 class="question">로또 일등 당첨되면..</h3>
+                    </div>
+                    <div class="answer">
+                        <div class="button">
+                            {%csrf_token%}
+
+                            <button type="submit" class="option" name="answer" value=1>쓴다</button>
+                            <button type="submit" class="option" name="answer" value=2>저축한다</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</body>
