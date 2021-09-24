@@ -1,0 +1,18 @@
+<form action="{% url 'login' %}" method="POST">
+    {%csrf_token%}
+    <div class="form-element">
+        {{form.username}}
+    </div>
+    <div class="form-element">
+        {{form.password}}
+    </div>
+    <div class="failed-login">
+        {% if messages %}
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+    <button type="submit" class="btn-login">로그인</button>
+</form>
