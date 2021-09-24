@@ -6,9 +6,6 @@ def home(request):
 
     return render(request,'home.html')
 
-
-
-
 def bill_detail(request,bill_id):
 
     return render(request,bill_detail)
