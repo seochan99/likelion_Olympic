@@ -13,4 +13,5 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=15)
     profile= models.ImageField(blank=True, null=True)
     result=models.CharField(max_length=5, choices=RESULT_CHOICES)
-
+    count_num = models.IntegerField(default=0, blank=True, null=True)
+    
