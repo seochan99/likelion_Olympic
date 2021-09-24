@@ -5,6 +5,8 @@ from account.models import CustomUser
 
 # Create your views here.
 def main(request):
-    
-    return render(request, 'main.html')
+    return render(request,'main.html')
+
+def showhome(request):
+    return render(request, 'home.html')
 
