@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
     path('<str:bill_id>', views.bill_detail, name="bill_detail"),
     path('bill_write/', views.bill_write, name="bill_write"),
     path('bill_create/', views.bill_create, name="bill_create"),
