@@ -12,5 +12,5 @@ class CustomUser(AbstractUser):
     age = models.CharField(max_length=10) 
     nickname = models.CharField(max_length=15)
     profile= models.ImageField(blank=True, null=True)
-    result=models.CharField(max_length=3, choices=RESULT_CHOICES)
+    result=models.CharField(max_length=5, choices=RESULT_CHOICES)
 
