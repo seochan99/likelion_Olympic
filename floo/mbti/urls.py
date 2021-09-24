@@ -5,6 +5,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name = 'mbti'
 
 urlpatterns = [
     path('main/', views.test_main, name='test_main'),
