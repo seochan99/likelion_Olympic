@@ -88,7 +88,6 @@ ul li {
 	$Header
 ========================================================================== */
 #header {
-  position: fixed;
   width: 100%;
   z-index: 999; }
   #header .header-content {
@@ -143,7 +142,6 @@ ul li {
   display: none;
   height: 44px;
   overflow: hidden;
-  position: fixed;
   right: 5%;
   text-indent: 100%;
   top: 32px;
