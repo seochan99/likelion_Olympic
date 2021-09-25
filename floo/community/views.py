@@ -1,6 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from account.models import CustomUser
 from .models import Bill, Debate
+from account.forms import RegisterForm
+from django.db import models
+from django.conf import settings
+
 
 def home(request):
 
@@ -42,7 +46,11 @@ def debate_main(request):
     return render(request, 'debate_main.html')
 
 def mypage(request):
-    return render(request,"mypage.hmtl")
+    myquest = request.POST.get('myquest')
+
+    bills = Bill.objects.filter(author=request.user)
+
+    return render(request,"mypage.hmtl",{'bills':bills})
 
 
 def comment_to_bill(request, bill_id):
