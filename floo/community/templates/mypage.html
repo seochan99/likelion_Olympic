@@ -2,64 +2,67 @@
 {% load static %}
 {% block content %}
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
     <style>
-      * {
-        font-family: "Nanum Gothic", sans-serif;
-        font-size: 23px;
-      }
-      #ti{
-        font-family: "Nanum Gothic", sans-serif;
-        font-size: 23px;
-        color: rgb(255, 255, 255);
-      }
-      </style>
+        * {
+            font-family: "Nanum Gothic", sans-serif;
+            font-size: 23px;
+        }
+
+        #ti {
+            font-family: "Nanum Gothic", sans-serif;
+            font-size: 23px;
+            color: rgb(255, 255, 255);
+        }
+    </style>
 </head>
-    
+
 <body>
-    <div class="container-fluid" >
-        <section id = "ti" class = "mx-auto mt-5 pt-5 pb-5 px-3" style="background-color: #CCDBE2;
+    <div class="container-fluid">
+        <section id="ti" class="mx-auto mt-5 pt-5 pb-5 px-3" style="background-color: #CCDBE2;
         width:50%;
         text-align:center;
         border-radius: 10px;">
             마이페이지 입니다. {{user.get_username}}님 반갑습니다.
 
-</section>
-</div>
+        </section>
+    </div>
 
-<div class="container-fluid" >
-    <section class = "mx-auto mt-5 pt-5 pb-5 px-3" style="background-color:white;
+    <div class="container-fluid">
+        <section class="mx-auto mt-5 pt-5 pb-5 px-3" style="background-color:white;
         width:80%;
         text-align:center;
         border-radius: 10px;">
-    
-이름: {{user.get_username}}<br><br>
-NickName: {{user.nickname}}<br><br>
-profile: {{user.profile}}
 
-</div>
---글보여주기
+            이름: {{user.get_username}}<br><br>
+            NickName: {{user.nickname}}<br><br>
+            profile: {{user.profile}}
 
-{% for bill in bills %}
-<div>
+    </div>
+    --글보여주기
 
-    <br>
-    
+    {% for bill in bills %}
+    <div>
+
+        <br>
+
         <h2>
             <li>{{bill.image}}</li>
         </h2>
-    </a>
-    <ul>
-        <h3>
-            <li>제목: {{bill.title}}</li>
-            <li>작성일: {{bill.date}}</li>
-        </h3>
-    </ul>
+        </a>
+        <ul>
+            <h3>
+                <li>제목: {{bill.title}}</li>
+                <li>작성일: {{bill.date}}</li>
+            </h3>
+        </ul>
 
-</div>
+    </div>
 
 </body>
+
 </html>
 {% endfor %}
 
