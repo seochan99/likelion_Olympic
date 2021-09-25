@@ -14,15 +14,16 @@ def test_main(request): #test mainpage
     return render(request, "test_main.html")
 def mbti1(request):  # 1 로 이동
 
-    return render(request, 'mbti1.html')
+    return render(request, 'mbti1.html',  {'count_num' : count_num})
 
 
 def mbti2(request):  # 2로 이동
+
     global count_num
     if(request.method == 'POST'):
         count_n = request.POST['answer']
         count_num += int(count_n)
-    return render(request, 'mbti2.html')
+    return render(request, 'mbti2.html',  {'count_num' : count_num})
 
 
 def mbti3(request):  # 3로 이동
@@ -30,7 +31,7 @@ def mbti3(request):  # 3로 이동
     if(request.method == 'POST'):
         count_n = request.POST['answer']
         count_num += int(count_n)
-    return render(request, 'mbti3.html')
+    return render(request, 'mbti3.html',  {'count_num' : count_num})
 
 
 def mbti4(request):
@@ -97,6 +98,10 @@ def result(request):
         count_n = request.POST['answer']
         count_num += int(count_n)
         user = Mbti_count()
+        if(count_num>100):
+            count_num-=100
+        if(count_num<-100):
+            count_num+=100    
         user.count_num = count_num
 
-        return render(request, 'result.html')
+    return render(request, 'result.html', {'count_num' : count_num})
