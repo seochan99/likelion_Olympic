@@ -1,12 +1,42 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block content%}
 
-<body>
+<head>
+    <link rel="stylesheet" href='{% static "bill_main.css" %}' />
+</head>
+
+<section style="margin: 200px 170px 200px 170px;">
+<div class="row row-cols-1 row-cols-md-4 g-4" id="main-container">
     {% for bill in bills.all %}
     <a href="{%url 'community:bill_detail' bill.id %}">
-        {{bill.title}}
-        {{bill.date}}
+        <div class="col">
+        <div class="card h-100" id="card">
+            <img src="{{bill.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5>{{bill.title}}</h5>
+            <small>{{bill.summary}}</small>
+            </div>
+            <div class="card-footer" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+            <small class="text-muted">
+                <strong>{{bill.author}}</strong>
+                {{bill.date}}
+            </small>
+            </div>
+        </div>
+        </div>
     </a>
     {% endfor %}
+</div>
+  
+{%if user.is_authenticated %}
+    <br><br><a href="{%url 'community:bill_write' %}" class="btn btn-light" style="font-family: 'Jeju Gothic', sans-serif;" >글쓰기</a><br><br>
+{%else%}
+    <br><br><div class="alert alert-secondary" style="font-family: 'Jeju Gothic', sans-serif;" role="alert">
+    글을 쓰려면 로그인 해주세요!
+</div>
+{%endif%}
+</section>
 
-    <a href="{%url 'community:bill_write' %}" class="btn btn-light">글쓰기</a>
-</body>
-
+{%endblock%}
+    

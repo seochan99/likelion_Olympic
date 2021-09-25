@@ -16,3 +16,10 @@
     font-family: 'ELAND_Choice_L';
     color: white;
 }
+
+.progress {
+    color :royalblue;
+    background-color: red;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
