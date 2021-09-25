@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm
 from .models import CustomUser
-from community import views
+#from community import views
 
 # Create your views here.
 def register_view(request):
@@ -49,9 +49,11 @@ def login_view(request):
                 login(request, user)
             return redirect('main')
         else:
+            '''
             messages.add_message(request, messages.ERROR,
-                                 ' 가입하지 않은 계정이거나, 잘못된 비밀번호입니다')
-            return redirect('login')
+                                 ' 가입하지 않은 계정이거나, 잘못된 비밀번호입니다')'''
+            error_message = "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다."
+            return render(request, 'login.html', {'form': form, 'error': error_message})
     else:
         form = AuthenticationForm()
     return render(request, "login.html", {"form": form})
