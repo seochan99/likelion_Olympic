@@ -3,7 +3,7 @@
 {%block content%}
 
 <link rel="stylesheet" href='{% static "bill_detail.css" %}' />
-    <section style="margin: 100px 100px 100px 100px;">
+    <section style="margin: 200px 100px 100px 200px;">
         <div class="main-container">
             <div class="bill-info">
                 {{bill.author}}
@@ -30,7 +30,7 @@
 
         </div>
         
-
+<!--
         <div class="comments" >
             <div class="allComments">
                 <div class="container justify-content-center mt-5 border-left border-right">
@@ -48,6 +48,34 @@
                             {{comment.date}}
                         {% endfor %}
                         </form>
+                </div>
+            </div>
+        </div>
+    -->
+
+        <div class="comments">
+            <form action="{% url 'community:comment_to_bill' bill.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="bill_comment_text" placeholder="+ 댓글을 달아보세요!" class="form-control addtxt" style="margin:0 auto; width:80%"/>
+                <input type="submit" style="border-radius: 5px; background:#88b2f1; border:none ;" value="Send"></input>
+            </form>
+                <div class="container mt-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8">
+                        {% for comment in bill_comments %}
+                        <div class="card p-3 mt-2">
+                            <div class="d-flex justify-content-between align-items-center" style="margin:0 auto; width:80%">
+                                <div class="user d-flex flex-row align-items-center"> 
+                                    <span>
+                                        <small class="font-weight-bold text-primary">{{comment.author}}</small> 
+                                        <small class="font-weight-bold">{{comment.text}}</small>
+                                    </span>
+                                </div> 
+                                <small>{{comment.date}}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
