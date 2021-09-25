@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from account.models import CustomUser
-from .models import Bill, Debate, BillComment,DebateComment
+from .models import Bill, Debate, BillComment, DebateComment, TalkRoom_Y, TalkRoom_F
 from account.forms import RegisterForm
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+
 
 def home(request):
     return render(request,'home.html')
@@ -80,13 +82,39 @@ def comment_to_debate(request, debate_id):
     return redirect('community:debate_detail',debate_id)
 
 def community_choose(request):
-
+    #print(request.user.result)
+    user = request.user
     if request.user.result == "yolo":
-        return render(request, "community_yolo.html")
+        talks = TalkRoom_Y.objects.all()
+        return render(request, "community_yolo.html",{'talks':talks},{"user":user})
     elif request.user.result=="fire":
-        return render(request, "community_fire.html")
+        talks = TalkRoom_F.objects.all()
+        return render(request, "community_fire.html", {'talks': talks}, {"user": user})
+    else:
+
+        return redirect('mbti:test_main')
 
 
 def forbidden(request):
     return render(request,"forbidden.html")
 
+
+def community_to_talk_Y(request):
+    
+    form = Talking_y()
+    response = {
+        'form': form,
+        
+    }
+
+    if request.method == "POST":
+        form = Talking_f(request.POST)
+        if form.is_valid():
+            talk = form.save(commit=False)
+            talk.time = timezone.now()
+            talk.author = request.user
+            talk.save()
+            return redirect('community_choose')
+
+    return render(request, 'community_comment.html')
+    
