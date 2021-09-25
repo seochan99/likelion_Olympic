@@ -1,1 +1,8 @@
-영수증 메인페이징 ㅣㅂ니다.
+
+<body>
+    {% for bill in bills.all %}
+        {{bill.title}}
+        {{bill.date}}
+    {% endfor %}
+</body>
+

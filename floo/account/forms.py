@@ -28,7 +28,6 @@ class RegisterForm(UserCreationForm):
          "placeholder":"confirm password",
      }),label="password")
 
-
     nickname = forms.CharField(widget = forms.TextInput(attrs={
          "class":"input",
          "type":"nickname",

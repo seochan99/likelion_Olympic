@@ -10,10 +10,13 @@ def home(request):
 
     return render(request,'home.html')
 
+def bill_main(request):
+    bills = Bill.objects.all()
+    return render(request,'bill_main.html',{'bills':bills})
+
 def bill_detail(request,bill_id):
-
-    return render(request,bill_detail)
-
+    bill = get_object_or_404(Bill, pk=bill_id)
+    return render(request,'bill_detail.html',{'bill':bill})
 
 def bill_write(request):
     return render(request,"bill_write.html")
@@ -23,23 +26,18 @@ def bill_create(request):
     new_bill=Bill()
     return redirect('bill_detail', new_bill.id)
 
-
-def bill_main(request):
-    return render(request,'bill_main.html')
-
 def debate_detail(request,debate_id):
     
-    return render(request,bill_detail)
+    return render(request,"debate_detail.html")
 
 
 def debate_write(request):
     return render(request,"bill_write.html")
 
 
-
 def debate_create(request):
-    new_bill=Bill()
-    return redirect('bill_detail', new_bill.id)
+    new_debate=Debate()
+    return redirect('debate_detail', new_debate.id)
 
 
 def debate_main(request):
