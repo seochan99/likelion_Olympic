@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.db import models
@@ -105,3 +106,4 @@ def result(request):
         user.count_num = count_num
 
     return render(request, 'result.html', {'count_num' : count_num})
+

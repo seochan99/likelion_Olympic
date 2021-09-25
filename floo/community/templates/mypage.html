@@ -1,1 +1,30 @@
 mypage 입니다.
+
+--개인정보
+
+<li>이름: {{user.get_username}}</li><br>
+<li>NickName: {{user.nickname}}</li><br>
+<li>profile: {{user.profile}}</li>
+
+
+--글보여주기
+
+{% for bill in bills %}
+<div>
+
+    <br>
+    
+        <h2>
+            <li>{{bill.image}}</li>
+        </h2>
+    </a>
+    <ul>
+        <h3>
+            <li>제목: {{bill.title}}</li>
+            <li>작성일: {{bill.date}}</li>
+        </h3>
+    </ul>
+
+</div>
+
+{% endfor %}
