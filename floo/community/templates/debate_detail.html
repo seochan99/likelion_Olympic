@@ -1,24 +1,27 @@
-
 <body>
-    debate 제목:
-    {{debate.title}}<br>
-    debate 본문:
-    {{debate.text}}
-    
+    <section style="margin: 80px 30px 0px 30px;">
+        {{debate.text}}
 
-    <div class="comment">
-        <form action="{%url 'community:comment_to_debate' debate.id %}" method="POST">
-            {% csrf_token %}
-            <textarea name="debate_text"></textarea>
-            <button>추가</button>
-        </form>
-        <div class="allComments">
-            {% for comment in debate_comments %}
-            {{comment.text}}
-            {{comment.author}}
-            {{comment.date}}
-            {% endfor %}
+
+        
+
+        <div class="comment">
+            <form action="{%url 'community:comment_to_debate' debate.id %}" method="POST">
+                {% csrf_token %}
+                <div class="bill_comment">
+                    <textarea name="bill_comment_text"></textarea>
+                    <textarea name="bill_comment_title"></textarea>
+                    <button>추가</button>
+                </div>
+            </form>
+            <div class="allComments">
+                {% for comment in debate_comments %}
+                {{comment.text}}
+                {{comment.author}}
+                {{comment.date}}
+                {{comment.like}}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    
+    </section>
 </body>
