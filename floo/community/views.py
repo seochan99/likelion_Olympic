@@ -7,7 +7,6 @@ from django.conf import settings
 
 
 def home(request):
-
     return render(request,'home.html')
 
 def bill_main(request):
@@ -21,10 +20,21 @@ def bill_detail(request,bill_id):
 def bill_write(request):
     return render(request,"bill_write.html")
 
-
 def bill_create(request):
-    new_bill=Bill()
-    return redirect('bill_detail', new_bill.id)
+    if request.user.is_authenticated:
+        new_bill=Bill()
+        if 'image' in request.FILES:
+            new_bill.image=request.FILES['image']
+        new_bill.author=request.user
+        new_bill.text=request.POST.get('text',False)
+        new_bill.title=request.POST.get('title',False)
+        new_bill.yolo=0
+        new_bill.fire=0
+        new_bill.save()
+        return redirect('bill_detail', new_bill.id)
+    else:
+        return redirect('bill_main')
+
 
 def debate_detail(request,debate_id):
     
@@ -62,5 +72,4 @@ def community_choose(request,user_type):
         return render(request, "community_yolo.html")
     else:
         return render(request, "community_fire.html")
-
 
