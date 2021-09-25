@@ -1,6 +1,119 @@
-main 페이지 입니다.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOO</title>
+</head>
+<style>
+    html { box-sizing: border-box; } *, *::before, *::after { box-sizing: inherit; }
+html {
+  height: 100vh;
+  font-size: 10px;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #bcd6d7, rgb(193, 193, 195));
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  
 
-<a href="{% url 'community:home' %}"><button>Home Page</button></a>
-<button>Test Page</button>
+  ins {
+    color: greenyellow;
+    cursor: pointer;
+    border: 2px solid greenyellow;
+    padding: 2px 12px 2px 12px;
+    border-radius: 28px;
+    text-decoration: none;
+    
+    &::before {
+      font-size: 0;
+      content: '+ ';
+      &:hover {
+        animation: typing 4s;
+        animation-fill-mode: forwards;
+      }
+    }
+    
+    &:focus {
+      outline: none;
+      
+      &::before {
+        animation: typing 4s;
+        animation-fill-mode: forwards;
+      }
+      
+      &+del {
+        animation: before-setup 4s;
+        animation-fill-mode: forwards;
+        
+        &::before {
+          animation: typing 4s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+}
+
+@keyframes typing {
+  0% { font-size: 0; }
+  100% { font-size: 4rem;}
+}
+
+@keyframes before-setup {
+  0% { 
+    font-size: 0;
+    border: 2px solid darkred;
+    padding: 2px 12px 2px 12px;
+    border-radius: 28px;
+  }
+  100% { 
+    font-size: 4rem;
+    border: 2px solid darkred;
+    padding: 2px 12px 2px 12px;
+    border-radius: 28px;
+  }
+}
+button{
+    border-radius: 10px;
+    border: 1px black;
+}
+.tile{
+    
+}
+</style>
+<body>
+    
+
+
+
+    <main>
+        <p>
+            <ins tabindex="0">FLOO</ins>에 오신것을 환영합니다.
+          </p>
+    </main>
+    
+    
+    <div class="tile" >
+        <a href="{% url 'community:home' %}"><button>Home Page</button></a>
+    </div>
+      
+    
+    <a href="{% url 'mbti:test_main' %}"><button>mbti_page</button></a>
+    
+</body>
+</html>
+
+
+
+
 
 <a href="{% url 'mbti:test_main' %}"><button>mbti_page</button></a>
+

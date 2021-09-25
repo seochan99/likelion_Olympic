@@ -1,1 +1,13 @@
 영수증 폼 작성페이지입니다.
+
+<form action="{%url 'community:bill_create' %}" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    <textarea name="bill_text"></textarea>
+    <textarea name="bill_title"></textarea>
+    <button>추가</button>
+
+
+
+    
+</form>
