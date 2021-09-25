@@ -5,8 +5,9 @@
 <head>
     <link rel="stylesheet" href='{% static "debate_main.css" %}' />
 </head>
+<div class="container-fluid">
 
-<section style="margin: 200px 170px 200px 170px;">
+
     <div class="row row-cols-1 row-cols-md-4 g-4" id="main-container">
         {% for debate in debates.all %}
 
@@ -16,7 +17,7 @@
                 <div class="card h-100" id="card">
                     
                     <div class="card-body">
-                        <h5>{{debate.title}}</h5>
+                    <p id="rcorners1">{{debate.title}}</p>
                         
                     </div>
                     <div class="card-footer" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
@@ -34,6 +35,9 @@
 
     
     
+
 </section>
+
+</div>
 
 {%endblock%}
