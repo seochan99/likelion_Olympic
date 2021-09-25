@@ -1,10 +1,10 @@
-<form action="{% url 'login' %}" method="POST">
+<form action="{% url 'account:login' %}" method="POST">
     {%csrf_token%}
     <div class="form-element">
-        {{form.username}}
+        ID : {{form.username}}
     </div>
     <div class="form-element">
-        {{form.password}}
+        Passwrod : {{form.password}}
     </div>
     <div class="failed-login">
         {% if messages %}
