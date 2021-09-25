@@ -5,11 +5,10 @@
     debate 본문:
     {{debate.text}}
     
-
     <div class="comment">
         <form action="{%url 'community:comment_to_debate' debate.id %}" method="POST">
             {% csrf_token %}
-            <textarea name="debate_text"></textarea>
+            <textarea name="debate_comment_text"></textarea>
             <button>추가</button>
         </form>
         <div class="allComments">
