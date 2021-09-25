@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from account.models import CustomUser
-from .models import Bill, Debate, BillComment, DebateComment, TalkRoom_Y, TalkRoom_F
+from .models import Bill, Debate, BillComment, DebateComment
 from account.forms import RegisterForm
 from django.db import models
 from django.conf import settings
@@ -47,7 +47,7 @@ def bill_delete(request,bill_id):
 
 def debate_detail(request,debate_id):
     selected_debate = get_object_or_404(Debate, pk=debate_id)
-    debate_comments=BillComment.objects.filter(debate=selected_debate)
+    debate_comments=DebateComment.objects.filter(debate=selected_debate)
     return render(request,"debate_detail.html",{'debate':selected_debate,'debate_comments':debate_comments})
 
 def debate_main(request):
@@ -79,40 +79,8 @@ def comment_to_debate(request, debate_id):
     comment.save()
     return redirect('community:debate_detail',debate_id)
 
-def community_choose(request):
-    #print(request.user.result)
-    user = request.user
-    if request.user.result == "yolo":
-        talks = TalkRoom_Y.objects.all()
-        return render(request, "community_yolo.html",{'talks':talks},{"user":user})
-    elif request.user.result=="fire":
-        talks = TalkRoom_F.objects.all()
-        return render(request, "community_fire.html", {'talks': talks}, {"user": user})
-    else:
-
-        return redirect('mbti:test_main')
 
 
 def forbidden(request):
     return render(request,"forbidden.html")
 
-
-def community_to_talk_Y(request):
-    
-    form = Talking_y()
-    response = {
-        'form': form,
-        
-    }
-
-    if request.method == "POST":
-        form = Talking_f(request.POST)
-        if form.is_valid():
-            talk = form.save(commit=False)
-            talk.time = timezone.now()
-            talk.author = request.user
-            talk.save()
-            return redirect('community_choose')
-
-    return render(request, 'community_comment.html')
-    
