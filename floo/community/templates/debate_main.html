@@ -1,1 +1,6 @@
-토론방의 main페이지 입니다.
+
+{% for debate in debates %}
+    <a href="{%url 'community:debate_detail' debate.id %}">
+        {{debate}}
+    </a>
+{% endfor %}

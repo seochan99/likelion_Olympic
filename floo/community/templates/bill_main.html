@@ -1,8 +1,12 @@
 
 <body>
     {% for bill in bills.all %}
+    <a href="{%url 'community:bill_detail' bill.id %}">
         {{bill.title}}
         {{bill.date}}
+    </a>
     {% endfor %}
+
+    <a href="{%url 'community:bill_write' %}" class="btn btn-light">글쓰기</a>
 </body>
 
