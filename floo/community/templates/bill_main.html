@@ -3,19 +3,21 @@
 {%block content%}
 
 <head>
-    <link rel="stylesheet" href='{% static "bill_main.css" %}' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
-<section style="margin: 200px 170px 200px 170px;">
+<section style="margin: 100px 170px 100px 170px;">
 <div class="row row-cols-1 row-cols-md-4 g-4" id="main-container">
     {% for bill in bills.all %}
-    <a href="{%url 'community:bill_detail' bill.id %}">
+    <a href="{%url 'community:bill_detail' bill.id %}" style="text-decoration-line: none;">
         <div class="col">
-        <div class="card h-100" id="card">
-            <img src="{{bill.image.url}}" class="card-img-top" alt="...">
+        <div class="card h-100" id="card" style="height: 100px;">
+            {% if bill.image %}
+                <img src="{{bill.image.url}}" class="card-img-top" alt="...">
+            {% endif %}
             <div class="card-body">
-            <h5>{{bill.title}}</h5>
-            <small>{{bill.summary}}</small>
+                <h4 style="font-family: 'ELAND_Choice_L';">{{bill.title}}</h4>
+                <small style="color:black; font-family: 'ELAND_Choice_L';">{{bill.summary}}</small>
             </div>
             <div class="card-footer" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
             <small class="text-muted">

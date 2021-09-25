@@ -20,10 +20,8 @@ class BillComment(models.Model):
     bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
     text=models.CharField(max_length=150)
 
-class TalkRoom(models.Model):
-    author=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    date=models.DateTimeField(auto_now_add=True)
-    text=models.CharField(max_length=150)
+
+    
 
 class Debate(models.Model):
     text=models.CharField(max_length=200)

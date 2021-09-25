@@ -9,17 +9,25 @@
         .yolo{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#c93131}
         .fire{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#6b6ddb}
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
 
     
 
 
 </head>
 
- <body style="background-color:pink;">
+ <body style="background-color:#CCDBE2;
+    width:80%;
+    text-align:center;
+    border-radius: 10px;">
     {% load static %}
     
     {{count_num}}
-    
+    <div >
     <!--그래프로 그냥..-->
     {%if count_num == -100 %}
     <div>
@@ -127,8 +135,13 @@
         <ul><li><span class="yolo" style="width:0%"></span><span class="fire" style="width:100%"></span></li></ul>
     </div>
     {% endif %}
+    </div>
 
-
+    <div>
+        <a href="{% url 'account:register' %}">
+            <button class="btn btn-outline-danger mt-5" type="submit" name="answer" name="result">회원가입 하러가기-!</button>
+        </a>
+    </div>
     
  </body>
  <script type="text/javascript">

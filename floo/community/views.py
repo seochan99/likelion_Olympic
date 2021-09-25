@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from account.models import CustomUser
-from .models import Bill, Debate, BillComment,DebateComment
+from .models import Bill, Debate, BillComment, DebateComment
 from account.forms import RegisterForm
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+
 
 def home(request):
     return render(request,'home.html')
@@ -45,7 +47,7 @@ def bill_delete(request,bill_id):
 
 def debate_detail(request,debate_id):
     selected_debate = get_object_or_404(Debate, pk=debate_id)
-    debate_comments=BillComment.objects.filter(debate=selected_debate)
+    debate_comments=DebateComment.objects.filter(debate=selected_debate)
     return render(request,"debate_detail.html",{'debate':selected_debate,'debate_comments':debate_comments})
 
 def debate_main(request):
@@ -63,28 +65,20 @@ def mypage(request):
 def comment_to_bill(request, bill_id):
     comment=BillComment()
     comment.author=request.user
-    if comment.text:
-        comment.text=request.POST.get('comment_text',False)
-        comment.bill=get_object_or_404(Bill, pk=bill_id)
-        comment.save()
+    comment.text=request.POST.get('bill_comment_text',False)
+    comment.bill=get_object_or_404(Bill, pk=bill_id)
+    comment.save()
     return redirect('community:bill_detail',bill_id)
 
 
 def comment_to_debate(request, debate_id):
     comment=DebateComment()
     comment.author=request.user
-    if comment.text:
-        comment.debate=get_object_or_404(Debate, pk=debate_id)
-        comment.text=request.POST.get('debate_text',False)
-        comment.save()
+    comment.debate=get_object_or_404(Debate, pk=debate_id)
+    comment.text=request.POST.get('debate_comment_text',False)
+    comment.save()
     return redirect('community:debate_detail',debate_id)
 
-def community_choose(request):
-
-    if request.user.result == "yolo":
-        return render(request, "community_yolo.html")
-    elif request.user.result=="fire":
-        return render(request, "community_fire.html")
 
 
 def forbidden(request):

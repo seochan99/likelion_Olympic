@@ -19,7 +19,6 @@ urlpatterns = [
     path('mypage/',views.mypage,name="mypage"),
     path('bill/<str:bill_id>/comment/', views.comment_to_bill, name="comment_to_bill"),
     path('debate/<str:debate_id>/comment/', views.comment_to_debate, name="comment_to_debate"),
-    path('communitcation/', views.community_choose, name="community_choose"),
     path('forbidden/',views.forbidden,name="forbidden"),
 
 
