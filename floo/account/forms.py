@@ -13,7 +13,7 @@ AGE_CHOICES = (('5', '10대 이하'), ('10', '10대'), ('20', '20대'),
 class RegisterForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'password1', 'password2', 'profile','sex', 'age', ]
+        fields = ['username', 'password1', 'password2', 'nickname','sex', 'age', ]
 
 
 widgets = {
