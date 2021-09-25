@@ -85,8 +85,27 @@ button{
     border-radius: 10px;
     border: 1px black;
 }
+
 .tile{
-    
+  display: inline;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+  margin: 30px;
+
+  padding: 20px;
+}
+
+button{
+  border: none;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 500;
 }
 </style>
 <body>
@@ -94,19 +113,22 @@ button{
 
 
 
-    <main>
+    <main style="height: -120px;">
         <p>
             <ins tabindex="0">FLOO</ins>에 오신것을 환영합니다.
           </p>
+          <div class="tile" >
+            <a href="{% url 'community:home' %}"><button>Home</button></a>
+        </div>
+          
+        <div class="tile" >
+          <a href="{% url 'mbti:test_main' %}"><button>MBTI TEST</button></a>
+      </div>
     </main>
     
     
-    <div class="tile" >
-        <a href="{% url 'community:home' %}"><button>HOME</button></a>
-    </div>
-      
+
     
-    <a href="{% url 'mbti:test_main' %}"><button>MBTI TEST</button></a>
     
 </body>
 </html>
