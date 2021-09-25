@@ -1,31 +1,63 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block content%}
 
-<body>
-    <section style="margin: 80px 30px 0px 30px;">
-    {{bill.text}}
-    
-
-    {%if user.is_authenticated %}
-        {%if user.username == bill.author.username %}
-            <a href="{%url 'community:bill_delete' bill.id %}" class="btn btn-light" >삭제하기</a>
-        {%endif%}
-    {%endif%}
-
-    <div class="comment">
-        <form action="{%url 'community:comment_to_bill' bill.id %}" method="POST">
-            {% csrf_token %}
-            <div class="bill_comment">
-                <textarea name="bill_comment_text"></textarea>
-                <textarea name="bill_comment_title"></textarea>
-                <button>추가</button>
+<link rel="stylesheet" href='{% static "bill_detail.css" %}' />
+    <section style="margin: 100px 170px 170px 100px;">
+        <div class="main-container">
+            <div class="bill-info">
+                {{bill.author}}
+                {{bill.date}}
             </div>
-        </form>
-        <div class="allComments">
-            {% for comment in bill_comments %}
-            {{comment.text}}
-            {{comment.author}}
-            {{comment.date}}
-            {% endfor %}
+            {% if bill.image %}
+                <img src="{{bill.image.url}}" class="card-img-top" alt="...">
+            {% endif %}
+
+            <div class="right-section">
+                {{bill.text}}
+    
+                <div class="buttons">
+                    {%if user.is_authenticated %}
+                        {%if user.username == bill.author.username %}
+                            <a href="{%url 'community:bill_delete' bill.id %}" class="btn btn-light" >삭제하기</a>
+                        {%endif%}
+                    {%endif%}
+                    
+                    <br><br>
+                    <a href="{%url 'community:bill_main'%}" class="btn btn-light" style="margin-bottom: 10%; font-family: 'ELAND_Choice_L'">목록으로 돌아가기</a>
+                </div>
+            </div>
+
         </div>
-    </div>
-</section>
-</body>
+        
+
+        <div class="comment">
+            <form action="{%url 'community:comment_to_bill' bill.id %}" method="POST">
+                {% csrf_token %}
+                <div class="bill_comment">
+                    <textarea name="bill_comment_text"></textarea>
+                    <button>추가</button>
+                </div>
+            </form>
+            <div class="allComments">
+                <div class="container justify-content-center mt-5 border-left border-right">
+                {% for comment in bill_comments %}
+                <div class="d-flex justify-content-center pt-3 pb-2"> 
+                    <input type="text" name="text" placeholder="+ Add a Comment" class="form-control addtxt"> </div>
+                <div class="d-flex justify-content-center py-2">
+                    <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+                        <div class="d-flex justify-content-between py-1 pt-2">
+                            <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
+                        </div>
+                    </div>
+                </div>
+                {{comment.text}}
+                {{comment.author}}
+                {{comment.date}}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -65,20 +65,18 @@ def mypage(request):
 def comment_to_bill(request, bill_id):
     comment=BillComment()
     comment.author=request.user
-    if comment.text:
-        comment.text=request.POST.get('comment_text',False)
-        comment.bill=get_object_or_404(Bill, pk=bill_id)
-        comment.save()
+    comment.text=request.POST.get('bill_comment_text',False)
+    comment.bill=get_object_or_404(Bill, pk=bill_id)
+    comment.save()
     return redirect('community:bill_detail',bill_id)
 
 
 def comment_to_debate(request, debate_id):
     comment=DebateComment()
     comment.author=request.user
-    if comment.text:
-        comment.debate=get_object_or_404(Debate, pk=debate_id)
-        comment.text=request.POST.get('debate_text',False)
-        comment.save()
+    comment.debate=get_object_or_404(Debate, pk=debate_id)
+    comment.text=request.POST.get('debate_comment_text',False)
+    comment.save()
     return redirect('community:debate_detail',debate_id)
 
 
