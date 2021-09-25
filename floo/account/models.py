@@ -23,4 +23,4 @@ class CustomUser(AbstractUser):
     nickname = models.CharField(max_length=15, help_text='닉네임 입력하세요')
     profile = models.ImageField(blank=True, null=True, help_text='이미지 입력하세요')
     result = models.CharField(
-        max_length=5, choices=RESULT_CHOICES, default='null')
+        max_length=5, choices=RESULT_CHOICES, default='yolo')
