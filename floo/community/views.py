@@ -57,7 +57,7 @@ def debate_main(request):
 def mypage(request):
     myquest = request.POST.get('myquest')
     mybills = Bill.objects.filter(author=request.user)
-    mydebates = Debate.objects.filter(author=request.user)
+    mydebates = DebateComment.objects.filter(author=request.user)
     return render(request,"mypage.html",{'bills':mybills,'debates':mydebates})
 
 

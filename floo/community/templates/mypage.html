@@ -36,29 +36,34 @@
         text-align:center;
         border-radius: 10px;">
 
-            이름: {{user.get_username}}<br><br>
-            NickName: {{user.nickname}}<br><br>
+            이름: {{user.get_username}}<br>
+            NickName: {{user.nickname}}<br>
             profile: {{user.profile}}
-
+        </section>
     </div>
-    --글보여주기
+
 
     {% for bill in bills %}
-    <div>
+    <div class="container-fluid">
+        <section class="mx-auto mt-5 pt-5 pb-5 px-3" style="background-color:white;
+        width:80%;
+        text-align:center;
+        border-radius: 10px;">
 
-        <br>
-
-        <h2>
-            <li>{{bill.image}}</li>
-        </h2>
-        </a>
-        <ul>
+            <br>
+            <H2>{{user.get_username}}님이 작성하신 글입니다</H2>
+            <br>
             <h3>
-                <li>제목: {{bill.title}}</li>
-                <li>작성일: {{bill.date}}</li>
+                {{bill.image}}
             </h3>
-        </ul>
-
+            </a>
+            <ul>
+                <h3>
+                    <li>제목: {{bill.title}}</li>
+                    <li>작성일: {{bill.date}}</li>
+                </h3>
+            </ul>
+        </section>
     </div>
 
 </body>
