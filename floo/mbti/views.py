@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.db import models
@@ -18,7 +19,7 @@ def mbti1(request):  # 1 로 이동
 
 
 def mbti2(request):  # 2로 이동
-    
+
     global count_num
     if(request.method == 'POST'):
         count_n = request.POST['answer']
@@ -98,6 +99,11 @@ def result(request):
         count_n = request.POST['answer']
         count_num += int(count_n)
         user = Mbti_count()
+        if(count_num>100):
+            count_num-=100
+        if(count_num<-100):
+            count_num+=100    
         user.count_num = count_num
 
     return render(request, 'result.html', {'count_num' : count_num})
+

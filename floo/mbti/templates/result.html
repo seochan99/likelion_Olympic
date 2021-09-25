@@ -1,2 +1,140 @@
-결과창입니다.
-{{count_num}}
+
+<!doctype html>
+<html lang="ko">
+ <head>
+    <meta charset="UTF-8">
+    <style>
+        ul{margin:0 50px 0 50px;padding:1px 0 0 0;border-top:0;border-right:0;font-size:11px;font-family:Tahoma, Geneva, sans-serif;list-style:none}
+        li{position:relative;margin:10px 0;vertical-align:top;white-space:nowrap}
+        .yolo{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#c93131}
+        .fire{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#6b6ddb}
+    </style>
+
+    
+
+
+</head>
+
+ <body style="background-color:pink;">
+    {% load static %}
+    
+    {{count_num}}
+    
+    <!--그래프로 그냥..-->
+    {%if count_num == -100 %}
+    <div>
+        <ul><li><span class="yolo" style="width:100%"></span><span class="fire" style="width:0%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -90 %}
+    <div>
+        <ul><li><span class="yolo" style="width:95%"></span><span class="fire" style="width:5%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -80 %}
+    <div>
+        <ul><li><span class="yolo" style="width:90%"></span><span class="fire" style="width:10%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -70 %}
+    <div>
+        <ul><li><span class="yolo" style="width:85%"></span><span class="fire" style="width:15%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -60 %}
+    <div>
+        <ul><li><span class="yolo" style="width:80%"></span><span class="fire" style="width:20%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -50 %}
+    <div>
+        <ul><li><span class="yolo" style="width:75%"></span><span class="fire" style="width:25%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -40 %}
+    <div>
+        <ul><li><span class="yolo" style="width:70%"></span><span class="fire" style="width:30%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -30 %}
+    <div>
+        <ul><li><span class="yolo" style="width:65%"></span><span class="fire" style="width:35%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -20%}
+    <div>
+        <ul><li><span class="yolo" style="width:60%"></span><span class="fire" style="width:40%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == -10 %}
+    <div>
+        <ul><li><span class="yolo" style="width:55%"></span><span class="fire" style="width:45%"></span></li></ul>
+    </div>
+    {% endif %}
+    
+    {%if count_num == 0 %}
+    <div>
+        <ul><li><span class="yolo" style="width:50%"></span><span class="fire" style="width:50%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 10 %}
+    <div>
+        <ul><li><span class="yolo" style="width:45%"></span><span class="fire" style="width:55%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 20 %}
+    <div>
+        <ul><li><span class="yolo" style="width:40%"></span><span class="fire" style="width:60%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 30 %}
+    <div>
+        <ul><li><span class="yolo" style="width:35%"></span><span class="fire" style="width:65%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 40 %}
+    <div>
+        <ul><li><span class="yolo" style="width:30%"></span><span class="fire" style="width:70%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 50 %}
+    <div>
+        <ul><li><span class="yolo" style="width:25%"></span><span class="fire" style="width:75%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 60 %}
+    <div>
+        <ul><li><span class="yolo" style="width:20%"></span><span class="fire" style="width:80%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 70 %}
+    <div>
+        <ul><li><span class="yolo" style="width:15%"></span><span class="fire" style="width:85%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 80 %}
+    <div>
+        <ul><li><span class="yolo" style="width:10%"></span><span class="fire" style="width:90%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 90 %}
+    <div>
+        <ul><li><span class="yolo" style="width:5%"></span><span class="fire" style="width:95%"></span></li></ul>
+    </div>
+    {% endif %}
+    {%if count_num == 100 %}
+    <div>
+        <ul><li><span class="yolo" style="width:0%"></span><span class="fire" style="width:100%"></span></li></ul>
+    </div>
+    {% endif %}
+
+
+    
+ </body>
+ <script type="text/javascript">
+    const result = "{{count_num}}";
+    result = int(result);
+</script>
+</html>
+ 
+

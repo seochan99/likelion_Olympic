@@ -1,3 +1,4 @@
+
 #mbti_main{
     background-color: #1D1E60;
     width:80%;
@@ -16,3 +17,11 @@
     font-family: 'ELAND_Choice_L';
     color: white;
 }
+
+.progress {
+    color :royalblue;
+    background-color: red;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
