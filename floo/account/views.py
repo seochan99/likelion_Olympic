@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm
 from .models import CustomUser
-
+from community import views
 
 # Create your views here.
 def register_view(request):
@@ -29,11 +29,14 @@ def register_view(request):
         return render(request, 'register.html', {'form': form})
 
 
+def logout_view(request):
+    logout(request)
+    return redirect("main")
+
+
+
 def login_view(request):
-    '''
-    if request.user.is_authenticated:
-        return redirect('main')
-    '''
+    
 
     if request.method == "POST":
         form = AuthenticationForm(request=request, data=request.POST)
