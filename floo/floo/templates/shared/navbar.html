@@ -7,7 +7,7 @@
                     <li><a href="{% url 'mbti:test_main' %}">MBTI 테스트</a></li>
                     <li><a href="{% url 'community:debate_main' %}">토론</a></li>
                     {%if user.is_authenticated%}
-                    <li class="nav-item"><a href="{% url 'community:mypage' request.user.id %}" class="nav-link">마이페이지</a></li>
+                    <li class="nav-item"><a href="{% url 'community:mypage'%}" class="nav-link">마이페이지</a></li>
                     <!-- <li class="nav-item"><a href="{%url 'account:login'%}" class="nav-link">로그아웃</a></li> -->
                     {% else %}
                     <li class="nav-item cta"><a href="{%url 'account:login'%}" class="nav-link">로그인</a></li>

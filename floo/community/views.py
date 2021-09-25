@@ -48,7 +48,7 @@ def mypage(request):
 
     bills = Bill.objects.filter(author=request.user)
 
-    return render(request,"mypage.hmtl",{'bills':bills})
+    return render(request,"mypage.html",{'bills':bills})
 
 
 def comment_to_bill(request, bill_id):
