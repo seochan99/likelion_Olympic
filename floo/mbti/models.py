@@ -4,13 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
-
-
-
-
 User = get_user_model()
-
 
 class Mbti_count(models.Model):
     count_num = models.IntegerField(default=0, blank=True, null=True)
