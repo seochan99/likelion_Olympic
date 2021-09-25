@@ -56,11 +56,12 @@ def comment_to_bill(request, bill_id):
     return render(request, 'comment_to_bill.html')
 
 
-def community_choose(request,user_type):
+def community_choose(request):
 
-    if user_type==yolo:
+    if request.user.result == "yolo":
         return render(request, "community_yolo.html")
-    else:
+    elif request.user.result=="fire":
         return render(request, "community_fire.html")
 
-
+    else:
+        return render(request,"test_main.html")
