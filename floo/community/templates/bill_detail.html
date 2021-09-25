@@ -3,7 +3,7 @@
 {%block content%}
 
 <link rel="stylesheet" href='{% static "bill_detail.css" %}' />
-    <section style="margin: 100px 170px 170px 100px;">
+    <section style="margin: 100px 100px 100px 100px;">
         <div class="main-container">
             <div class="bill-info">
                 {{bill.author}}
@@ -31,13 +31,13 @@
         </div>
         
 
-        <div class="comment">
+        <div class="comments" >
             <div class="allComments">
                 <div class="container justify-content-center mt-5 border-left border-right">
                     <div class="d-flex justify-content-center pt-3 pb-2"> 
                         <form action="{% url 'community:comment_to_bill' bill.id %}" method="POST">
                         {% csrf_token %}
-                        <input type="text" name="bill_comment_text" placeholder="+ Add a Comment" class="form-control addtxt"> </div>
+                        <input type="text" name="bill_comment_text" placeholder="+ 댓글을 달아보세요!" class="form-control addtxt" style="margin:0 auto; width:80%"/>
                         <button>추가</button>
                         {% for comment in bill_comments %}
                             <div class="d-flex justify-content-center py-2">
