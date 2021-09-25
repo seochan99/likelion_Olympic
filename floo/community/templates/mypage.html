@@ -1,12 +1,44 @@
-mypage 입니다.
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+    <style>
+      * {
+        font-family: "Nanum Gothic", sans-serif;
+        font-size: 23px;
+      }
+      #ti{
+        font-family: "Nanum Gothic", sans-serif;
+        font-size: 23px;
+        color: rgb(255, 255, 255);
+      }
+      </style>
+</head>
+    
+<body>
+    <div class="container-fluid" >
+        <section id = "ti" class = "mx-auto mt-5 pt-5 pb-5 px-3" style="background-color: #CCDBE2;
+        width:50%;
+        text-align:center;
+        border-radius: 10px;">
+            마이페이지 입니다. {{user.get_username}}님 반갑습니다.
 
---개인정보
+</section>
+</div>
 
-<li>이름: {{user.get_username}}</li><br>
-<li>NickName: {{user.nickname}}</li><br>
-<li>profile: {{user.profile}}</li>
+<div class="container-fluid" >
+    <section class = "mx-auto mt-5 pt-5 pb-5 px-3" style="background-color:white;
+        width:80%;
+        text-align:center;
+        border-radius: 10px;">
+    
+이름: {{user.get_username}}<br><br>
+NickName: {{user.nickname}}<br><br>
+profile: {{user.profile}}
 
-
+</div>
 --글보여주기
 
 {% for bill in bills %}
@@ -27,4 +59,8 @@ mypage 입니다.
 
 </div>
 
+</body>
+</html>
 {% endfor %}
+
+{% endblock %}
