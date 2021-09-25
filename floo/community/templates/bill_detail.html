@@ -14,11 +14,12 @@
             {% csrf_token %}
             <div class="bill_comment">
                 <textarea name="bill_comment_text"></textarea>
+                <textarea name="bill_comment_title"></textarea>
                 <button>추가</button>
             </div>
         </form>
         <div class="allComments">
-            {% for comment in bill_comments.all %}
+            {% for comment in bill_comments %}
             {{comment.text}}
             {{comment.author}}
             {{comment.date}}

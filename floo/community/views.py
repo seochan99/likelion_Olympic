@@ -13,12 +13,12 @@ def bill_main(request):
     return render(request,'bill_main.html',{'bills':bills})
 
 def bill_detail(request,bill_id):
-    bill = get_object_or_404(Bill, pk=bill_id)
-    bill_comments=BillComment.objects.filter(bill=bill)
-    return render(request,'bill_detail.html',{'bill':bill,'bill_comments':bill_comments})
+    selected_bill = get_object_or_404(Bill, pk=bill_id)
+    bill_comments=BillComment.objects.filter(bill=selected_bill)
+    return render(request,'bill_detail.html',{'bill':selected_bill,'bill_comments':bill_comments})
 
 def bill_write(request):
-    return render(request,"bill_create.html")
+    return render(request,"bill_write.html")
 
 def bill_create(request):
     if request.user.is_authenticated:
@@ -26,26 +26,27 @@ def bill_create(request):
         if 'image' in request.FILES:
             new_bill.image=request.FILES['image']
         new_bill.author=request.user
-        new_bill.text=request.POST.get('text',False)
-        new_bill.title=request.POST.get('title',False)
+        new_bill.text=request.POST.get('bill_text',False)
+        new_bill.title=request.POST.get('bill_title',False)
         new_bill.yolo=0
         new_bill.fire=0
         new_bill.save()
-        return redirect('bill_detail', new_bill.id)
+        return redirect('community:bill_detail', new_bill.id)
     else:
-        return redirect('404page')
+        return redirect('community:forbidden')
 
 def bill_delete(request,bill_id):
     delete_bill = Bill.objects.get(id=bill_id)
     if delete_bill.author == request.user:
         delete_bill.delete()
-        return redirect('bill_main')
+        return redirect('community:bill_main')
     else:
-        return redirect('404page')
+        return redirect('community:forbidden')
 
 def debate_detail(request,debate_id):
-    debate = get_object_or_404(Debate, pk=debate_id)
-    return render(request,"debate_detail.html")
+    selected_debate = get_object_or_404(Debate, pk=debate_id)
+    debate_comments=BillComment.objects.filter(debate=selected_debate)
+    return render(request,"debate_detail.html",{'debate':selected_debate,'debate_comments':debate_comments})
 
 def debate_main(request):
     debates=Debate.objects.all()
@@ -63,9 +64,10 @@ def comment_to_bill(request, bill_id):
     comment=BillComment()
     comment.author=request.user
     if comment.text:
+        comment.text=request.POST.get('comment_text',False)
         comment.bill=get_object_or_404(Bill, pk=bill_id)
         comment.save()
-    return redirect('bill_detail',bill_id)
+    return redirect('community:bill_detail',bill_id)
 
 
 def comment_to_debate(request, debate_id):
@@ -73,8 +75,9 @@ def comment_to_debate(request, debate_id):
     comment.author=request.user
     if comment.text:
         comment.debate=get_object_or_404(Debate, pk=debate_id)
+        comment.text=request.POST.get('debate_text',False)
         comment.save()
-    return redirect('debate_detail',debate_id)
+    return redirect('community:debate_detail',debate_id)
 
 def community_choose(request,user_type):
 
@@ -83,3 +86,5 @@ def community_choose(request,user_type):
     else:
         return render(request, "community_fire.html")
 
+def forbidden(request):
+    return render(request,"forbidden.html")
