@@ -57,7 +57,7 @@ def mypage(request):
 
     bills = Bill.objects.filter(author=request.user)
 
-    return render(request,"mypage.hmtl",{'bills':bills})
+    return render(request,"mypage.html",{'bills':bills})
 
 
 def comment_to_bill(request, bill_id):
@@ -79,12 +79,14 @@ def comment_to_debate(request, debate_id):
         comment.save()
     return redirect('community:debate_detail',debate_id)
 
-def community_choose(request,user_type):
+def community_choose(request):
 
-    if user_type==yolo:
+    if request.user.result == "yolo":
         return render(request, "community_yolo.html")
-    else:
+    elif request.user.result=="fire":
         return render(request, "community_fire.html")
+
 
 def forbidden(request):
     return render(request,"forbidden.html")
+
