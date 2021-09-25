@@ -10,15 +10,15 @@ app_name ="community"
 urlpatterns = [
     path('home/', views.home, name='home'),
     path('bill_main/', views.bill_main, name="bill_main"),
-    path('<int:bill_id>', views.bill_detail, name="bill_detail"),
+    path('bill/<str:bill_id>', views.bill_detail, name="bill_detail"),
     path('bill_write/', views.bill_write, name="bill_write"),
     path('bill_create/', views.bill_create, name="bill_create"),
-    path('<str:debate_id>', views.debate_detail, name="debate_detail"),
-    path('debate_write/', views.debate_write, name="debate_write"),
-    path('debate_create/', views.debate_create, name="debate_create"),
+    path('bill_delete/<str:bill_id>', views.bill_delete, name="bill_delete"),
+    path('debate/<str:debate_id>', views.debate_detail, name="debate_detail"),
     path('debate_main/', views.debate_main, name="debate_main"),
     path('mypage/',views.mypage,name="mypage"),
-    path('bill/<int:bill_id>/comment/', views.comment_to_bill, name="comment_to_bill"),
+    path('bill/<str:bill_id>/comment/', views.comment_to_bill, name="comment_to_bill"),
+    path('debate/<str:debate_id>/comment/', views.comment_to_debate, name="comment_to_debate"),
     path('communitcation/', views.community_choose, name="community_choose"),
     
 

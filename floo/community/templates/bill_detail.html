@@ -2,4 +2,28 @@
 <body>
     {{bill.text}}
     
+
+    {%if user.is_authenticated %}
+        {%if user.username == bill.author.username %}
+            <a href="{%url 'community:bill_delete' bill.id %}" class="btn btn-light" >삭제하기</a>
+        {%endif%}
+    {%endif%}
+
+    <div class="comment">
+        <form action="{%url 'community:comment_to_bill' bill.id %}" method="POST">
+            {% csrf_token %}
+            <div class="bill_comment">
+                <textarea name="bill_comment_text"></textarea>
+                <button>추가</button>
+            </div>
+        </form>
+        <div class="allComments">
+            {% for comment in bill_comments.all %}
+            {{comment.text}}
+            {{comment.author}}
+            {{comment.date}}
+            {% endfor %}
+        </div>
+    </div>
+
 </body>

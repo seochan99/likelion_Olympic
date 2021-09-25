@@ -33,6 +33,8 @@ class DebateComment(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     text=models.CharField(max_length=150)
     like=models.IntegerField(default=0)
+    debate = models.ForeignKey(Debate, on_delete=models.CASCADE)
+
 
 
 
