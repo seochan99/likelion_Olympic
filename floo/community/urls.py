@@ -9,10 +9,10 @@ app_name ="community"
 
 urlpatterns = [
     path('home/', views.home, name='home'),
-    path('<str:bill_id>', views.bill_detail, name="bill_detail"),
+    path('bill_main/', views.bill_main, name="bill_main"),
+    path('<int:bill_id>', views.bill_detail, name="bill_detail"),
     path('bill_write/', views.bill_write, name="bill_write"),
     path('bill_create/', views.bill_create, name="bill_create"),
-    path('bill_main/', views.bill_main, name="bill_main"),
     path('<str:debate_id>', views.debate_detail, name="debate_detail"),
     path('debate_write/', views.debate_write, name="debate_write"),
     path('debate_create/', views.debate_create, name="debate_create"),
